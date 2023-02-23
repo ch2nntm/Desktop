@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    class SVSP:SV
+    {
+        private string noiTT;
+        private float diemTT;
+
+        public SVSP():base()
+        {
+            noiTT="";
+            diemTT=0.0f;
+        }
+
+        public SVSP(string ht, int ns, float dtb, string ntt, float dtt) : base(ht, ns, dtb)
+        {
+            noiTT = ntt;
+            diemTT = dtt;
+        }
+
+        public override void Nhap()
+        {
+            base.Nhap();
+            Console.WriteLine("Nhap noi thuc tap: ");
+            noiTT = Console.ReadLine();
+            Console.WriteLine("Nhap diem thuc tap: ");
+            diemTT = float.Parse(Console.ReadLine());
+        }
+
+        public override void hienThi()
+        {
+            base.hienThi();
+            Console.WriteLine("Noi thuc tap: {0} - Diem thuc tap: {1}",noiTT, diemTT);
+        }
+
+        public override string loaiSV()
+        {
+            return "SP";
+        }
+
+        public override bool TN()
+        {
+            return diemTB >= 5 && diemTT >= 5;
+        }
+    }
+}
