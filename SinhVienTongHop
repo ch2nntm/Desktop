@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    abstract class SV
+    {
+        protected string hoten;
+        protected int namsinh;
+        protected float diemTB;
+
+        public SV()
+        {
+            hoten = "";
+            namsinh = 2000;
+            diemTB = 0;
+        }
+
+        public SV(string ht, int ns, float dtb)
+        {
+            hoten = ht;
+            namsinh = ns;
+            diemTB = dtb;
+        }
+
+        public virtual void Nhap()
+        {
+            Console.WriteLine("Nhap ho ten:");
+            hoten = Console.ReadLine();
+            Console.WriteLine("Nhap nam sinh");
+            namsinh = int.Parse(Console.ReadLine());
+            Console.WriteLine("Nhap diem trung binh");
+            diemTB = float.Parse(Console.ReadLine());
+        }
+
+        public virtual void hienThi()
+        {
+            Console.WriteLine("Ho ten: {0} - Nam sinh: {1} - Diem TB: {2}",hoten,namsinh, diemTB);
+        }
+
+        public virtual string loaiSV()
+        {
+            return "";
+        }
+
+        abstract public bool TN();
+    }
+
+}
