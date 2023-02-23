@@ -50,3 +50,193 @@ namespace SVTongHop
     }
 
 }
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    class SVSP:SV
+    {
+        private string noiTT;
+        private float diemTT;
+
+        public SVSP():base()
+        {
+            noiTT="";
+            diemTT=0.0f;
+        }
+
+        public SVSP(string ht, int ns, float dtb, string ntt, float dtt) : base(ht, ns, dtb)
+        {
+            noiTT = ntt;
+            diemTT = dtt;
+        }
+
+        public override void Nhap()
+        {
+            base.Nhap();
+            Console.WriteLine("Nhap noi thuc tap: ");
+            noiTT = Console.ReadLine();
+            Console.WriteLine("Nhap diem thuc tap: ");
+            diemTT = float.Parse(Console.ReadLine());
+        }
+
+        public override void hienThi()
+        {
+            base.hienThi();
+            Console.WriteLine("Noi thuc tap: {0} - Diem thuc tap: {1}",noiTT, diemTT);
+        }
+
+        public override string loaiSV()
+        {
+            return "SP";
+        }
+
+        public override bool TN()
+        {
+            return diemTB >= 5 && diemTT >= 5;
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    class SVTH:SV
+    {
+        private string tenDT;
+        private float diemDT;
+
+        public SVTH() : base()
+        {
+            tenDT = "";
+            diemDT = 0.0f;
+        }
+
+        public SVTH(string ht, int ns, float dtb, string tdt, float ddt):base(ht,ns,dtb)
+        {
+            tenDT = tdt;
+            diemDT = ddt;
+        }
+
+        public override void Nhap()
+        {
+            base.Nhap();
+            Console.WriteLine("Nhap ten de tai: ");
+            tenDT = Console.ReadLine();
+            Console.WriteLine("Nhap diem de tai: ");
+            diemDT = float.Parse(Console.ReadLine());
+        }
+
+        public override void hienThi()
+        {
+            base.hienThi();
+            Console.WriteLine("Ten de tai: {0} - Diem de tai: {1}",tenDT, diemDT);
+        }
+
+        public override string loaiSV()
+        {
+            return "TH";
+        }
+
+        public override bool TN()
+        {
+            return diemTB >= 5 && diemDT >= 5;
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace SVTongHop
+{
+    class DSSV
+    {
+        private ArrayList ds;
+
+        public DSSV()
+        {
+            ds = new ArrayList();
+        }
+
+        public void themSV(SV a)
+        {
+            if (!ds.Contains(a))
+                ds.Add(a);
+        }
+
+        public void lietKe()
+        {
+            foreach(SV item in ds)
+            {
+                item.hienThi();
+            }
+        }
+
+        public void lietKe(string loaiSV)
+        {
+            foreach(SV item in ds)
+            {
+                if (item.loaiSV().Equals(loaiSV))
+                    item.hienThi();
+            }
+        }
+
+        public void SVDuocTN()
+        {
+            foreach(SV item in ds)
+            {
+                if (item.TN())
+                    item.hienThi();
+            }
+        }
+    }
+}
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SV s1 = new SVSP("Le Hoai An", 2000, 8, "TP.HCM", 7);
+            SV s2 = new SVSP("Le Anh", 2001, 4, "Ha Noi", 7);
+            SV s3 = new SVTH("Tran Cao", 2001, 7, "Lang Son", 3);
+            DSSV ds = new DSSV();
+            ds.themSV(s1);
+            ds.themSV(s2);
+            ds.themSV(s3);
+            //ds.lietKe();
+            //ds.lietKe("SP");
+            ds.SVDuocTN();
+            Console.ReadKey();
+        }
+    }
+}
