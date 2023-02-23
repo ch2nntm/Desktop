@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SVTongHop
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            SV s1 = new SVSP("Le Hoai An", 2000, 8, "TP.HCM", 7);
+            SV s2 = new SVSP("Le Anh", 2001, 4, "Ha Noi", 7);
+            SV s3 = new SVTH("Tran Cao", 2001, 7, "Lang Son", 3);
+            DSSV ds = new DSSV();
+            ds.themSV(s1);
+            ds.themSV(s2);
+            ds.themSV(s3);
+            //ds.lietKe();
+            //ds.lietKe("SP");
+            ds.SVDuocTN();
+            Console.ReadKey();
+        }
+    }
+}
